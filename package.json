@@ -1,0 +1,20 @@
+{
+  "name": "t",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo ..."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balazs4/t.git"
+  },
+  "keywords": [],
+  "author": "balazs4",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/balazs4/t/issues"
+  },
+  "homepage": "https://github.com/balazs4/t#readme"
+}
