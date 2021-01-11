@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "t": "t.js"
+  },
   "scripts": {
     "test": "node -r ./index.js *.test.js"
   },
