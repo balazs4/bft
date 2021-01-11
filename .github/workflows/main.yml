@@ -2,9 +2,8 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: node:alpine
     steps:
-      - run: apk add --update git
-      - run: git clone https://github.com/${{ github.repository }} --branch=${{ github.ref }} --depth 1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       - run: npm ci
       - run: npm run test
