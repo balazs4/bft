@@ -1,7 +1,9 @@
 on: push
 jobs:
   test:
+    runs-on: ubuntu-latest
     container: node:alpine
+    steps:
       - run: apk add --update git
       - uses: actions/checkout@v2
       - run: npm ci
