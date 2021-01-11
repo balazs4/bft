@@ -5,6 +5,6 @@ jobs:
     container: node:alpine
     steps:
       - run: apk add --update git
-      - uses: actions/checkout@v2
+      - run: git clone ${{ github.repository }} --branch=${{ github.ref }} --depth 1
       - run: npm ci
       - run: npm run test
