@@ -5,12 +5,12 @@ global.test = (name, assertion) => {
   } catch (err) {
     process.stdout.write(`FAILED\t${name}`);
     const lines = err.message
-      .split("\n")
+      .split('\n')
       .map((x) => `\t${x}`)
-      .join("\n");
+      .join('\n');
     process.stdout.write(`\n${lines}`);
     process.exitCode = process.exitCode ? process.exitCode + 1 : 1;
   } finally {
-    process.stdout.write("\n");
+    process.stdout.write('\n');
   }
 };
