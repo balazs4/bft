@@ -9,6 +9,7 @@ global.test = (name, assertion) => {
       .map((x) => `\t${x}`)
       .join("\n");
     process.stdout.write(`\n${lines}`);
+    process.exitCode = process.exitCode ? process.exitCode + 1 : 1;
   } finally {
     process.stdout.write("\n");
   }

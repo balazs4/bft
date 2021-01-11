@@ -1,0 +1,8 @@
+on: push
+jobs:
+  test:
+    container: node:alpine
+      - run: apk add --update git
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run test
