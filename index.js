@@ -1,6 +1,6 @@
-global.test = (name, assertion) => {
+global.test = async (name, assertion) => {
   try {
-    assertion();
+    await assertion();
     process.stdout.write(`PASSED\t${name}`);
   } catch (err) {
     process.stdout.write(`FAILED\t${name}`);
