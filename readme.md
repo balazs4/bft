@@ -3,5 +3,5 @@
 ## usage
 
 ```bash
-node -r ./index.js example.test.js
+npx balazs4/t <your-test>.js
 ```
