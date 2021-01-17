@@ -1,7 +1,7 @@
 global.test = async (name, assertion = null) => {
   const log = (txt) => {
     return process.stdout.write(
-      process.stdout.hasColors() === true
+      process.stdout.hasColors && process.stdout.hasColors() === true
         ? txt
             .replace(/^PASSED/, '\x1b[32mPASSED\x1b[39m')
             .replace(/^FAILED/, '\x1b[31mFAILED\x1b[39m')

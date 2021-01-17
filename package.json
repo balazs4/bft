@@ -10,7 +10,8 @@
     "t": "t.js"
   },
   "scripts": {
-    "dev": "npx onchange -i -k '*.js' -- node -r ./index.js example.test.js"
+    "dev": "node -r ./index.js example.test.js",
+    "watch": "npx onchange -i -k '*.js' -- npm run -s"
   },
   "repository": {
     "type": "git",
