@@ -1,9 +1,9 @@
 FAILED	it should fail
 	Expected values to be strictly equal:
-	[32m+ actual[39m [31m- expected[39m
+	+ actual - expected
 	
-	[32m+[39m 'foobar'
-	[31m-[39m 'foobarrrrrrrr'
+	+ 'foobar'
+	- 'foobarrrrrrrr'
 	         ^
 PASSED	it should pass
 SKIPPED	it should skip
