@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/balazs4/t/issues"
   },
-  "homepage": "https://github.com/balazs4/t#readme"
+  "homepage": "https://github.com/balazs4/t#readme",
+  "prettier": {
+    "singleQuote": true
+  }
 }
