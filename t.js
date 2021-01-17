@@ -1,3 +1,5 @@
 #! /usr/bin/env node
-require('./');
-process.argv.slice(2).forEach((test) => require(require('path').resolve(test)));
+global.test = require('./').test;
+process.argv
+  .slice(2)
+  .forEach((testfile) => require(require('path').resolve(testfile)));

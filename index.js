@@ -1,4 +1,10 @@
-global.test = async (name, assertion = null) => {
+/**
+ * test function for `t`
+ *
+ * @param {string} name - name of test
+ * @param {function | Promise<void>} [assertion] - test code
+ */
+module.exports.test = async (name, assertion = null) => {
   const log = (txt) => {
     return process.stdout.write(
       process.stdout.hasColors && process.stdout.hasColors() === true

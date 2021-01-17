@@ -1,16 +1,17 @@
+const { test } = require('./');
+const assert = require('assert').strict;
+
 test(`it should fail`, () => {
-  const assert = require('assert').strict;
   assert.strictEqual('foobar', 'foobarrrrrrrr');
 });
 
 test(`it should pass`, () => {
-  const assert = require('assert').strict;
   assert.strictEqual(2, 2);
 });
 
 test(`it should skip`);
 
-test(`it should pass`, () => {
-  const assert = require('assert').strict;
+test(`it should pass`, async () => {
+  await new Promise((resolve) => setTimeout(resolve, 500));
   assert.strictEqual(2, 2);
 });

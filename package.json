@@ -10,11 +10,12 @@
     "t": "t.js"
   },
   "scripts": {
-    "dev": "node -r ./index.js example.test.js",
+    "dev": "node example.test.js",
     "expect": "NO_COLOR=true npm run -s dev > example.test.js.expected || true",
     "pretest": "NO_COLOR=true npm run -s dev > example.test.js.actual || true",
     "test": "diff -u example.test.js.expected example.test.js.actual",
-    "watch": "npx onchange -i -k '*.js' -- npm run -s"
+    "watch": "npx onchange -i -k '*.js' -- npm run -s",
+    "type": "npx typescript index.js --declaration --allowJs --emitDeclarationOnly"
   },
   "repository": {
     "type": "git",
