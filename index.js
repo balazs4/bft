@@ -25,7 +25,7 @@ module.exports.test = async (name, assertion = null) => {
     log(`PASSED\t${name}`);
   } catch (err) {
     log(`FAILED\t${name}`);
-    const lines = err.message
+    const lines = err.stack
       .split('\n')
       .map((x) => `\t${x}`)
       .join('\n');
