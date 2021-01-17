@@ -1,6 +1,6 @@
 {
   "name": "t",
-  "version": "1.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -10,13 +10,13 @@
     "t": "t.js"
   },
   "scripts": {
-    "test": "node -r ./index.js *.test.js"
+    "dev": "npx onchange -i -k '*.js' -- node -r ./index.js example.test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/balazs4/t.git"
   },
-  "keywords": [],
+  "keywords": ["test", "test-runner", "minimal", "bloat-free"],
   "author": "balazs4",
   "license": "MIT",
   "bugs": {
