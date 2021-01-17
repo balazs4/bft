@@ -2,7 +2,7 @@
  * test function for `t`
  *
  * @param {string} name - name of test
- * @param {function | Promise<void>} [assertion] - test code
+ * @param {function} [assertion] - test code
  */
 module.exports.test = async (name, assertion = null) => {
   const log = (txt) => {
@@ -15,23 +15,27 @@ module.exports.test = async (name, assertion = null) => {
         : txt
     );
   };
-  try {
-    if (assertion === null) {
-      await Promise.resolve();
-      log(`SKIPPED\t${name}`);
-      return;
+  setImmediate(async () => {
+    try {
+      if (assertion === null) {
+        log(`SKIPPED\t${name}`);
+        return;
+      }
+
+      const result = assertion();
+      await result;
+
+      log(`PASSED\t${name}`);
+    } catch (err) {
+      log(`FAILED\t${name}`);
+      const lines = err.stack
+        .split('\n')
+        .map((x) => `\t${x}`)
+        .join('\n');
+      log(`\n${lines}`);
+      process.exitCode = process.exitCode ? process.exitCode + 1 : 1;
+    } finally {
+      log('\n');
     }
-    await assertion();
-    log(`PASSED\t${name}`);
-  } catch (err) {
-    log(`FAILED\t${name}`);
-    const lines = err.stack
-      .split('\n')
-      .map((x) => `\t${x}`)
-      .join('\n');
-    log(`\n${lines}`);
-    process.exitCode = process.exitCode ? process.exitCode + 1 : 1;
-  } finally {
-    log('\n');
-  }
+  });
 };

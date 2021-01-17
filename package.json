@@ -10,13 +10,10 @@
     "bft": "bft.js"
   },
   "scripts": {
-    "dev": "node example.test.js",
-    "expect": "NO_COLOR=true npm run -s dev > example.test.js.expected || true",
-    "pretest": "NO_COLOR=true npm run -s dev > example.test.js.actual || true",
-    "test": "diff -u example.test.js.expected example.test.js.actual",
-    "watch": "npx -q onchange -i -k '*.js' -- npm run -s",
+    "test": "node example.test.js || true",
+    "dev": "npx -q onchange -i -k '*.js' -- npm run -s",
     "type": "npx -q typescript index.js --declaration --allowJs --emitDeclarationOnly",
-    "format": "npx -q prettier --write '*.js'"
+    "lint": "npx -q prettier --write '*.js'"
   },
   "repository": {
     "type": "git",
