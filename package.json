@@ -11,6 +11,8 @@
   },
   "scripts": {
     "dev": "node -r ./index.js example.test.js",
+    "pretest": "npm run -s dev > example.test.js.actual || true",
+    "test": "diff -u example.test.js.expected example.test.js.actual",
     "watch": "npx onchange -i -k '*.js' -- npm run -s"
   },
   "repository": {
