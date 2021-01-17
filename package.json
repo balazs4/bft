@@ -1,33 +1,34 @@
 {
-  "name": "t",
+  "name": "bft",
   "version": "0.0.0-semantic-release",
-  "description": "",
+  "description": "bloat-free-testrunner",
   "main": "index.js",
   "engines": {
     "node": ">=10.0.0"
   },
   "bin": {
-    "t": "t.js"
+    "bft": "bft.js"
   },
   "scripts": {
     "dev": "node example.test.js",
     "expect": "NO_COLOR=true npm run -s dev > example.test.js.expected || true",
     "pretest": "NO_COLOR=true npm run -s dev > example.test.js.actual || true",
     "test": "diff -u example.test.js.expected example.test.js.actual",
-    "watch": "npx onchange -i -k '*.js' -- npm run -s",
-    "type": "npx typescript index.js --declaration --allowJs --emitDeclarationOnly"
+    "watch": "npx -q onchange -i -k '*.js' -- npm run -s",
+    "type": "npx -q typescript index.js --declaration --allowJs --emitDeclarationOnly",
+    "format": "npx -q prettier --write '*.js'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/balazs4/t.git"
+    "url": "git+https://github.com/balazs4/bft.git"
   },
   "keywords": ["test", "test-runner", "minimal", "bloat-free"],
   "author": "balazs4",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/balazs4/t/issues"
+    "url": "https://github.com/balazs4/bft/issues"
   },
-  "homepage": "https://github.com/balazs4/t#readme",
+  "homepage": "https://github.com/balazs4/bft#readme",
   "prettier": {
     "singleQuote": true
   }
