@@ -5,16 +5,17 @@ global.test = async (name, assertion = null) => {
         ? txt
             .replace(/^PASSED/, '\x1b[32mPASSED\x1b[39m')
             .replace(/^FAILED/, '\x1b[31mFAILED\x1b[39m')
-            .replace(/^SKIPPED/, '\x1b[33mSKIPPED\x1b[39m')
+            .replace(/^SKIPPED/, '\x1b[2mSKIPPED\x1b[0m')
         : txt
     );
   };
   try {
-    (await assertion) ? assertion() : Promise.resolve();
     if (assertion === null) {
+      await Promise.resolve();
       log(`SKIPPED\t${name}`);
       return;
     }
+    await assertion();
     log(`PASSED\t${name}`);
   } catch (err) {
     log(`FAILED\t${name}`);
