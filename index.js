@@ -1,8 +1,8 @@
 /**
- * test function for `t`
+ * test function for `bft`
  *
  * @param {string} name - name of test
- * @param {function} [assertion] - test code
+ * @param {function|Promise<void>} [assertion] - test code
  */
 module.exports.test = async (name, assertion = null) => {
   const log = (txt) => {
