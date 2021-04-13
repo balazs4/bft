@@ -29,16 +29,16 @@ module.exports.test = async (description, assertion = null) => {
   setImmediate(async () => {
     try {
       if (assertion === null) {
-        log(`SKIPPED\t${name} << ${origin}`);
+        log(`SKIPPED\t${origin}\t>> ${name}`);
         return;
       }
 
       const result = assertion();
       await result;
 
-      log(`PASSED\t${name} << ${origin}`);
+      log(`PASSED\t${origin}\t>> ${name}`);
     } catch (err) {
-      log(`FAILED\t${name} << ${origin}`);
+      log(`FAILED\t${origin}\t>> ${name}`);
       const lines = err.stack
         .split('\n')
         .map((x) => `\t${x}`)
