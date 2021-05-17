@@ -15,14 +15,19 @@ module.exports.test = async (description, assertion = null) => {
         : txt
     );
   };
-  const [, , caller] = new Error().stack.split('at ');
-  const [, filename] = caller.match(/\((.*)\)/);
+  const [, caller] = new Error().stack
+    .split('\n')
+    .filter((x) => x.startsWith('    at'));
+  const [, filename] = caller.match(/\((.*)\)/) || [
+    ,
+    caller.replace('    at', '').trim(),
+  ];
   const origin =
     process.stdout.hasColors && process.stdout.hasColors() === true
       ? `\x1b[2m${filename}\x1b[0m`
       : filename;
 
-  const name = 
+  const name =
     process.stdout.hasColors && process.stdout.hasColors() === true
       ? `\x1b[1m${description}\x1b[0m`
       : description;
