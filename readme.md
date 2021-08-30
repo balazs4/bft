@@ -1,6 +1,6 @@
 # bft
 
-> **b**loat-**f**ree-**t**estrunner for node.js
+> **b**loat-**f**ree-**t**estrunner for node.js using ESModules
 
 ## usage
 
@@ -11,7 +11,7 @@ npx bft test.js test/foobar.js path/to/test/file.js
 ```javascript
 // test.js
 
-const assert = require('assert').strict;
+import { strict as assert } from 'assert';
 
 test('this a test case', () => {
    assert.strictEqual(42, 42);
@@ -44,11 +44,11 @@ npx c8 --all npx bft *.test.js
 
 ## faq
 
-- Can I use the module without messing up with `global`?  
+- Can I use the module without touching `global` object?  
   - Yes! see [example.test.js](example.test.js)
 
 - Where are the `setup` and `teardown` functions?
-  - In the bloated testrunner ;-)  `bft` encourages you to use [AAA - Arrange Act Assert](http://wiki.c2.com/?ArrangeActAssert) pattern.
+  - In the bloated testrunners ;-)  `bft` encourages you to use [AAA - Arrange Act Assert](http://wiki.c2.com/?ArrangeActAssert) pattern.
 
 - "If bloat-free, then color-free please"
    - `NO_COLOR=1 npx bft test.js` is your friend.

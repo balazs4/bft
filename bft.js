@@ -1,7 +1,7 @@
 #! /usr/bin/env node
-global.test = require('./').test;
+import { resolve } from 'path';
+import { test } from './index.js';
 
-process.argv
-  .slice(2)
-  .map((x) => require('path').resolve(x))
-  .forEach((testfile) => import(testfile));
+global.test = test;
+
+process.argv.slice(2).map(resolve).forEach(import);
