@@ -1,5 +1,5 @@
-const { test } = require('./');
-const assert = require('assert').strict;
+import { strict as assert } from 'assert';
+import { test } from './index.js';
 
 test(`it should pass async`, async () => {
   await new Promise((resolve) => setTimeout(resolve, 500));

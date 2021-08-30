@@ -4,4 +4,4 @@ global.test = require('./').test;
 process.argv
   .slice(2)
   .map((x) => require('path').resolve(x))
-  .forEach((testfile) => require(testfile));
+  .forEach((testfile) => import(testfile));
