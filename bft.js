@@ -4,4 +4,7 @@ import { test } from './index.js';
 
 global.test = test;
 
-process.argv.slice(2).map(resolve).forEach(import);
+process.argv
+  .slice(2)
+  .map((x) => resolve(x))
+  .forEach((x) => import(x));
