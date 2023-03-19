@@ -1,26 +1,29 @@
 {
   "name": "bft",
   "version": "0.0.0-semantic-release",
-  "description": "bloat-free-testrunner",
+  "description": "bloat-free-tapformatter",
   "main": "index.js",
-  "types": "index.d.ts",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=18.0.0"
   },
   "bin": {
-    "bft": "bft.js"
+    "bft": "index.js"
   },
   "scripts": {
-    "test": "node example.test.js || true",
-    "dev": "npx -q onchange -i -k '*.js' -- npm run -s",
-    "type": "npx -q typescript index.js --declaration --allowJs --emitDeclarationOnly",
-    "lint": "npx -q prettier --write '*.js'"
+    "test": "node --test example.test.js | node ./index.js",
+    "fmt": "npx -q prettier --write '*.js'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/balazs4/bft.git"
   },
-  "keywords": ["test", "test-runner", "minimal", "bloat-free"],
+  "keywords": [
+    "test",
+    "tap",
+    "tap-color",
+    "minimal",
+    "bloat-free"
+  ],
   "author": "balazs4",
   "license": "MIT",
   "bugs": {
@@ -28,6 +31,10 @@
   },
   "homepage": "https://github.com/balazs4/bft#readme",
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "printWitdh": 256
+  },
+  "devDependencies": {
+    "prettier": "2.8.4"
   }
 }

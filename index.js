@@ -1,57 +1,28 @@
-/**
- * test function for `bft`
- *
- * @param {string} description - description of test
- * @param {function|Promise<void>} [assertion] - test code
- */
-module.exports.test = async (description, assertion = null) => {
-  const log = (txt) => {
-    return process.stdout.write(
-      process.stdout.hasColors && process.stdout.hasColors() === true
-        ? txt
-            .replace(/^PASSED/, '\x1b[32mPASSED\x1b[0m')
-            .replace(/^FAILED/, '\x1b[31mFAILED\x1b[0m')
-            .replace(/^SKIPPED/, '\x1b[33mSKIPPED\x1b[0m')
-        : txt
-    );
-  };
-  const [, caller] = new Error().stack
-    .split('\n')
-    .filter((x) => x.startsWith('    at'));
-  const [, filename] = caller.match(/\((.*)\)/) || [
-    ,
-    caller.replace('    at', '').trim(),
-  ];
-  const origin =
-    process.stdout.hasColors && process.stdout.hasColors() === true
-      ? `\x1b[2m${filename}\x1b[0m`
-      : filename;
+#! /usr/bin/env node
 
-  const name =
-    process.stdout.hasColors && process.stdout.hasColors() === true
-      ? `\x1b[1m${description}\x1b[0m`
-      : description;
-  setImmediate(async () => {
-    try {
-      if (assertion === null) {
-        log(`SKIPPED\t${origin}\t>> ${name}`);
-        return;
-      }
+const colors =
+  typeof process.stdout.hasColors === 'function' &&
+  process.stdout.hasColors() === true
+    ? true
+    : false;
 
-      const result = assertion();
-      await result;
-
-      log(`PASSED\t${origin}\t>> ${name}`);
-    } catch (err) {
-      log(`FAILED\t${origin}\t>> ${name}`);
-      const lines = err.stack
-        .split('\n')
-        .map((x) => `\t${x}`)
-        .join('\n');
-      log(`\n${lines}`);
-      process.exitCode = process.exitCode ? process.exitCode + 1 : 1;
-    } finally {
-      log('\n');
+(async () => {
+  const eol = require('node:os').EOL;
+  const stdin = require('node:readline').createInterface(process.stdin);
+  for await (const line of stdin) {
+    if (colors === true) {
+      const colored = line
+        .replace(/duration_ms:? \d+.\d+/, '\x1b[2m$&\x1b[0m')
+        .replace(/not ok/, '\x1b[31mnot ok\x1b[0m')
+      process.stdout.write(`${colored}${eol}`);
+      continue;
     }
-  });
-};
+
+    process.stdout.write(`${line}${eol}`);
+
+    // .replace(/^PASSED/, '\x1b[32mPASSED\x1b[0m')
+    // .replace(/^FAILED/, '\x1b[31mFAILED\x1b[0m')
+    // .replace(/^SKIPPED/, '\x1b[33mSKIPPED\x1b[0m')
+    // ? `\x1b[1m${description}\x1b[0m`
+  }
+})();
